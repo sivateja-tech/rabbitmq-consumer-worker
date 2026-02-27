@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>RabbitMQ Real-time Updates</title>
+</head>
+<body>
+  <h2>Real-time Messages</h2>
+  <ul id="messages"></ul>
+
+  <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+  <script>
+    const socket = io("http://localhost:5000");
+
+    socket.on("newMessage", (data) => {
+      const li = document.createElement("li");
+      li.textContent = data;
+      document.getElementById("messages").appendChild(li);
+    });
+  </script>
+</body>
+</html>
